@@ -4,9 +4,39 @@
 		<title>FishtCal</title>
 		<meta charset="utf-8">
 		<script type="application/javascript" src="./index.js" defer></script>
+		<style>
+			body{
+				margin:0px;
+			}
+			main{
+				background-image:url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcanvas-bridge02.tubitv.com%2FxFEhbIXeOACr_e64ApI36yhjh-Y%3D%2F448x252%2Fsmart%2Fimg.adrise.tv%2F984b2bf1-9d89-4fb7-8b08-1a6b2b9e800a.png&f=1&nofb=1&ipt=afe29a6fd0fd1edb02c3e19f45a574ed2c5e549bcc9f74f96c0301574b3f67f3");
+				background-repeat: no-repeat;
+				background-size:cover;
+				padding: 40px;
+				height:100vh;
+			}
+			.cal{
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				height:100vh;
+			}
+			.calculator{
+				min-width:700px;
+				min-height:350px;
+				padding: 20px;
+				background-color:orange;
+			}
+		</style>
 	</head>
 	<body>
-		<p id="mao_de_alface">oi</p>
-		<button onclick="something()">clique_aqui</button>
+		<main>
+			<section class="cal">
+				<div class="calculator">
+					<p id="mao_de_alface">oi</p>
+					<input type="text"  id="user_input" onkeyup="fish()">
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
