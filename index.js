@@ -1,3 +1,10 @@
+const translate={
+	"*":1,
+	"/":1,
+	"+":2,
+	"-":2
+}
+
 class key_operation{
 	constructor(operation,index){
 		this.opr=operation;
@@ -13,12 +20,7 @@ class key_operation{
 class priority_operations{
 	constructor(){
 		this.array=[];
-		this.translate={
-			"*":1,
-			"/":1,
-			"+":2,
-			"-":2,
-		}
+		this.translate=translate;
 	}
 	get(idx){
 		return this.array[idx];
@@ -39,16 +41,16 @@ class priority_operations{
 	}
 
 	shiftUp(index){
-		if(!index||this.translate_index(Math.floor((index-1)/2))<this.translate_index(index))
+		if(!index||this.translate_index(Math.floor((index-1)/2))>this.translate_index(index))
 			return;
 		this.swap_idx(index,Math.floor((index-1)/2));
 		this.shiftUp(Math.floor((index-1)/2));
 	}
 	shiftDw(index){
 		var temp=index;
-		if(index*2+1<this.array.length&&this.translate_index(index)>this.translate_index(index*2+1))
+		if(index*2+1<this.array.length&&this.translate_index(index)<this.translate_index(index*2+1))
 			temp=index*2+1;
-		if(index*2+2<this.array.length&&this.translate_index(temp)>this.translate_index(index*2+2))
+		if(index*2+2<this.array.length&&this.translate_index(temp)<this.translate_index(index*2+2))
 			temp=index*2+2;
 		if(temp!=index){
 			this.swap_idx(index,temp);
@@ -62,6 +64,9 @@ class priority_operations{
 		this.shiftUp(this.array.length-1);
 	}
 	get_first(){
+		if(this.empty())
+			return null;
+
 		var value=this.array[0];
 		this.array[0]=this.array.at(-1);
 		this.array.splice(this.array.length-1,1);
@@ -80,41 +85,37 @@ class priority_operations{
 	}
 }
 
-/*
 function validate_input(user_input){
-	var numbers=[];
-	var operations=[];
+	var keys_translate=Object.keys(translate);
+	var state=0; // 0 for number and 1 for operations
 	for(var i=0;i<user_input.length;++i){
 		if(user_input[i].charCodeAt(0)==32)
 			continue;
 		var ascii_value=user_input[i].charCodeAt(0);
-		if(ascii_value==42){ // *
-			operations.push
-		if(ascii_value<48||ascii_value>57){
-			str="";
-			break;
+		if(keys_translate.includes(user_input[i])){
+			state=0;
+			continue;
 		}
-		str+=user_input[i];
+		if(ascii_value<48||ascii_value>57){
+			return 0;
+		}
+		state=1;
 	}
-	console.log(str);
-}*/
-function fish(){
-	/*
-	var input=document.getElementById("user_input");
-	validate_input(input.value);*/
-	var tst=new priority_operations();
-	tst.push_back("+",0);
-	tst.display();
-	tst.push_back("*",0);
-	tst.display();
-	tst.push_back("/",0);
-	tst.display();
-	tst.push_back("-",0);
-	tst.display();
+	return state;
+}
+//function get_operations(ref_array){
 
-	while(!tst.empty()){
-		var ext=tst.get_first();
-		console.log(ext.get_symbol()+" "+ext.get_index());
-		tst.display();
+function fish(){
+	var input=document.getElementById("user_input");
+	var output=document.getElementById("output");
+
+	output.classList.remove("animation_rotate");
+	if(!validate_input(input.value)){
+		output.style.color="red"
+		output.textContent="Please, insert a valid operation...";
+		return;
 	}
+	output.textContent="processing the calcule..";
+	output.classList.add("animation_rotate");
+	output.style.color="blue";
 }
