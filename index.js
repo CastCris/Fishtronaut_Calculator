@@ -4,6 +4,10 @@ const translate={
 	"+":2,
 	"-":2
 }
+function sleep(milis){
+	console.log(milis);
+	return new Promise(resolve=>setTimeout(resolve,milis));
+}
 
 class key_operation{
 	constructor(operation,index){
@@ -103,9 +107,37 @@ function validate_input(user_input){
 	}
 	return state;
 }
-//function get_operations(ref_array){
+function get_operations(user_input){
+	var keys_translate=Object.keys(translate);
+	var operations=new priority_operations();
+	var index_operations=0;
+	for(var i=0;i<user_input.length;++i){
+		if(!keys_translate.includes(user_input[i]))
+			continue;
+		operations.push_back(user_input[i],index_operations);
+		++index_operations;
+	}
+	return operations;
+}
+function get_numbers(user_input){
+	var keys_translate=Object.keys(translate);
+	var numbers=[""];
+	var index_numbers=0;
+	for(var i=0;i<user_input.length;++i){
+		if(keys_translate.includes(user_input[i])){
+			++index_numbers;
+			numbers.push("");
+			continue;
+		}
+		if(user_input[i].charCodeAt(0)<48||user_input[i].charCodeAt(0)>57)
+			continue;
+		numbers[index_numbers]+=user_input[i];
+	}
+	return numbers;
+}
 
-function fish(){
+
+async function fish(){
 	var input=document.getElementById("user_input");
 	var output=document.getElementById("output");
 
@@ -118,4 +150,7 @@ function fish(){
 	output.textContent="processing the calcule..";
 	output.classList.add("animation_rotate");
 	output.style.color="blue";
+
+	//
+	//await sleep(Math.floor(Math.random()*5000));
 }
