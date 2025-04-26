@@ -16,6 +16,7 @@
 				height:100vh;
 			}
 			.cal{
+				background-image:url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg1.picmix.com%2Foutput%2Fstamp%2Fnormal%2F1%2F7%2F2%2F7%2F1017271_51a01.gif&f=1&nofb=1&ipt=0fd389ecdc97c1d7676a03964191514a8f678cec59be4c0af20a4c06bd57df1d");
 				display:flex;
 				justify-content:center;
 				align-items:center;
@@ -36,13 +37,18 @@
 			}
 			/* Animations */
 			@keyframes rotate{
-				form{transform:rotate(0deg);}
-				to{transform:rotate(360deg)}
+				0%{transform:rotate(0deg);}
+				30%{transform:rotate(74deg);}
+				100%{transform:rotate(360deg);}
 			}
 			.animation_rotate{
 				animation:rotate ease-in-out;
 				animation-duration:3s;
 				animation-iteration-count:infinite;
+			}
+			.tree{
+				display:flex;
+				justify-content:center;
 			}
 		</style>
 	</head>
@@ -50,8 +56,12 @@
 		<main>
 			<section class="cal">
 				<div class="calculator">
-					<input type="text"  id="user_input" onkeyup="fish()">
+					<input type="text"  id="user_input" onkeyup="fish()" placeholder="insert here your expression(valid operations: + | - | / | *">
 					<p id="output"></p>
+					<div class="tree">
+						<img style="width:350px" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F03%2FTree-PNG-Image.png&f=1&nofb=1&ipt=3f87ba60692f98465b25a08093defd2211da0ec0f8c97fc69966ce86f0970f6f">
+						<img style="width:350px" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fbrainrotnew%2Fimages%2Ff%2Ff7%2FBrr_Brr_Patapim.png%2Frevision%2Flatest%3Fcb%3D20250326180223&f=1&nofb=1&ipt=4c5dd5d2d9cd4f17c25dcd68c1b618879d341bfa6ae79e9da9cb63f78a58eaca">
+					</div>
 				</div>
 			</section>
 		</main>

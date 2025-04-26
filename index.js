@@ -1,92 +1,12 @@
 const translate={
+	"/":0,
 	"*":1,
-	"/":1,
-	"+":2,
-	"-":2
+	"-":2,
+	"+":3,
 }
 function sleep(milis){
-	console.log(milis);
+	//console.log(milis);
 	return new Promise(resolve=>setTimeout(resolve,milis));
-}
-
-class key_operation{
-	constructor(operation,index){
-		this.opr=operation;
-		this.idx=index;
-	}
-	get_index(){
-		return this.idx;
-	}
-	get_symbol(){
-		return this.opr;
-	}
-}
-class priority_operations{
-	constructor(){
-		this.array=[];
-		this.translate=translate;
-	}
-	get(idx){
-		return this.array[idx];
-	}
-	translate_symbol(symbol){
-		return this.translate[symbol];
-	}
-	translate_index(idx){
-		return this.translate_symbol(this.get(idx).get_symbol());
-	}
-	swap_idx(idx1,idx2){
-		var temp=this.array[idx1];
-		this.array[idx1]=this.array[idx2];
-		this.array[idx2]=temp;
-	}
-	empty(){
-		return this.array.length==0;
-	}
-
-	shiftUp(index){
-		if(!index||this.translate_index(Math.floor((index-1)/2))>this.translate_index(index))
-			return;
-		this.swap_idx(index,Math.floor((index-1)/2));
-		this.shiftUp(Math.floor((index-1)/2));
-	}
-	shiftDw(index){
-		var temp=index;
-		if(index*2+1<this.array.length&&this.translate_index(index)<this.translate_index(index*2+1))
-			temp=index*2+1;
-		if(index*2+2<this.array.length&&this.translate_index(temp)<this.translate_index(index*2+2))
-			temp=index*2+2;
-		if(temp!=index){
-			this.swap_idx(index,temp);
-			this.shiftDw(temp);
-		}
-	}
-
-	push_back(operation,index){
-		var keys=new key_operation(operation,index);
-		this.array.push(keys);
-		this.shiftUp(this.array.length-1);
-	}
-	get_first(){
-		if(this.empty())
-			return null;
-
-		var value=this.array[0];
-		this.array[0]=this.array.at(-1);
-		this.array.splice(this.array.length-1,1);
-		this.shiftDw(0);
-
-		return value;
-	}
-
-	display(){
-		var str="[ ";
-		for(var i=0;i<this.array.length;++i){
-			str+="[ "+this.array[i].get_symbol()+" "+this.array[i].get_index()+" ] ";
-		}
-		str+="]";
-		console.log(str);
-	}
 }
 
 function validate_input(user_input){
@@ -109,12 +29,12 @@ function validate_input(user_input){
 }
 function get_operations(user_input){
 	var keys_translate=Object.keys(translate);
-	var operations=new priority_operations();
+	var operations=[];
 	var index_operations=0;
 	for(var i=0;i<user_input.length;++i){
 		if(!keys_translate.includes(user_input[i]))
 			continue;
-		operations.push_back(user_input[i],index_operations);
+		operations.push(user_input[i]);
 		++index_operations;
 	}
 	return operations;
@@ -125,6 +45,7 @@ function get_numbers(user_input){
 	var index_numbers=0;
 	for(var i=0;i<user_input.length;++i){
 		if(keys_translate.includes(user_input[i])){
+			numbers[index_numbers]=Number(numbers[index_numbers]);
 			++index_numbers;
 			numbers.push("");
 			continue;
@@ -133,13 +54,50 @@ function get_numbers(user_input){
 			continue;
 		numbers[index_numbers]+=user_input[i];
 	}
+	numbers[index_numbers]=Number(numbers[index_numbers]);
 	return numbers;
 }
 
+function carry_operation(x,y,opr){
+	if(opr=="*")
+		return x*y;
+	else if(opr=="/")
+		return x/y;
+	else if(opr=="+")
+		return x+y;
+	else if(opr=="-")
+		return x-y;
+}
+function calculate(init,end,operations,numbers){
+	if(init>end){
+		//console.log(numbers[init]);
+		return numbers[init];
+	}
+	if(init==end){
+		//console.log(operations[init]);
+		return carry_operation(numbers[init],numbers[init+1],operations[init]);
+	}
+
+	var middle=init;
+	for(var i=init;i<=end;++i){
+		if(translate[operations[middle]]<=translate[operations[i]])
+			middle=i;
+	}
+	var opr=operations[middle];
+
+	var res1=calculate(init,middle-1,operations,numbers);
+	var res2=calculate(middle+1,end,operations,numbers);
+
+	//console.log(res1+" "+res2);
+	//console.log(opr);
+
+	return carry_operation(res1,res2,opr);
+}
 
 async function fish(){
 	var input=document.getElementById("user_input");
 	var output=document.getElementById("output");
+	var output_value=get_numbers(output.textContent);
 
 	output.classList.remove("animation_rotate");
 	if(!validate_input(input.value)){
@@ -151,6 +109,20 @@ async function fish(){
 	output.classList.add("animation_rotate");
 	output.style.color="blue";
 
-	//
-	//await sleep(Math.floor(Math.random()*5000));
+	var operations=get_operations(input.value);
+	var numbers=get_numbers(input.value);
+
+	var result=calculate(0,operations.length-1,operations,numbers);
+	if(result==output_value[0]){
+		output.classList.remove("animation_rotate");
+		output.style.color="brown";
+		output.textContent="The result expression its: "+result;
+		return;
+	}
+
+	await sleep(Math.floor(2000+Math.random()*5000));
+
+	output.classList.remove("animation_rotate");
+	output.style.color="brown";
+	output.textContent="The result expression its: "+result;
 }
