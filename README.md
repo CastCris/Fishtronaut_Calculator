@@ -1,63 +1,58 @@
-Misterioso luar de fronteira
-Derramando no espinhaço
-Quase um mar
-Clareando a aduana
-Venezuela, donde estás?
+Daqui do morro dá pra ver tão legal
+O que acontece aí no seu litoral
+Nós gostamos de tudo, nós queremos é mais
+Do alto da cidade até a beira do cais
+Mais do que um bom bronzeado
+Nós queremos estar do seu lado
 
-Não sei por que nessas esquinas
-Vejo o seu olhar
+Nós tamo entrando sem óleo nem creme
+Precisando a gente se espreme
+Trazendo a farofa e a galinha
+Levando também a vitrolinha
+Separa um lugar nessa areia
+Nós vamos chacoalhar a sua aldeia
 
-Minha camisa estampada
-Com o rosto de Elvis
-A minha guitarra é minha razão
-Minha sorte anunciada
-Misteriosamente a Lua sobre nada
+Mistura sua laia
+Ou foge da raia
+Sai da tocaia
+Pula na baia
+Agora nós vamos invadir sua praia
 
-Não sei por que nessas esquinas
-Vejo o seu olhar
-Não sei por que nessas esquinas
-Vejo o seu olhar
+Sua praia!
+Sua praia!
 
-Espalhem por aí boatos
-De que eu ficarei aqui
-Espalhem por aí boatos
-De que eu ficarei aqui
+Agora se você vai se incomodar
+Então é melhor se mudar
+Não adianta nem nos desprezar
+Se a gente acostumar a gente vai ficar
+A gente tá querendo variar
+E a sua praia vem bem a calhar
 
-Vem, mamacita, doida e meiga
-Sempre o âmago dos fatos
-Minha guerra e as flores do cactos
-Poema, cinema, trincheira
+Não precisa ficar nervoso
+Pode ser que você ache gostoso
+Ficar em companhia tão saudável
+Pode até lhe ser bastante recomendável
+A gente pode te cutucar
+Não tenha medo, não vai machucar
 
-Não sei por que nessas esquinas
-Vejo o seu olhar
+Mistura sua laia
+Ou foge da raia
+Sai da tocaia
+Pula na baia
+Agora nós vamos invadir sua praia
 
-Um cego na fronteira, filósofo da zona
-Me disse que era um dervixe
-Eu disse pra ele, camarada
-Acredito em tanta coisa
-Que não vale nada
+Mistura sua laia
+Ou foge da raia
+Sai da tocaia
+Pula na baia
+Agora nós vamos invadir sua praia
 
-Não sei por que nessas esquinas
-Vejo o seu olhar
-Não sei por que nessas esquinas
-Vejo o seu olhar
+Sua praia! (Eu recomendo)
 
-Espalhem por aí boatos
-De que eu ficarei aqui
-Espalhem por aí boatos
-De que eu ficarei aqui
+Vamo invadir!
 
-Não sei por que nessas esquinas
-Vejo o seu olhar
-Não sei por que nessas esquinas
-Vejo o seu olhar
-
-Velejando, viajando, Sol quarando
-Meu querer, meu dever, meu devir
-E eu aqui a comer poeira
-Que o Sol deixará
-
-Não sei por que nessas esquinas
-Vejo seu olhar
-Não sei por que nessas esquinas
-Vejo seu olhar
+Mistura sua laia
+Ou foge da raia
+Sai da tocaia
+Pula na baia
+Agora nós vamos invadir sua praia
