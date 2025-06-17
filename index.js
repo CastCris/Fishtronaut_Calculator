@@ -58,16 +58,20 @@ function get_numbers(user_input){
 	return numbers;
 }
 
-function carry_operation(x,y,opr){
-	if(opr=="*")
-		return x*y;
-	else if(opr=="/")
-		return x/y;
-	else if(opr=="+")
-		return x+y;
-	else if(opr=="-")
-		return x-y;
-}
+
+function carry_operation(x, y, opr) {
+	switch (opr) {
+		case "*":
+			return x * y;
+		case "/":
+			return x / y;
+		case "+":
+			return x + y;
+		case "-":
+			return x - y;
+	}
+}	
+
 function calculate(init,end,operations,numbers){
 	if(init>end){
 		//console.log(numbers[init]);
